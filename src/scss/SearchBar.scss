@@ -1,0 +1,25 @@
+.SearchBar {
+  &__form {
+    display: flex;
+
+    &__field {
+      width: 65vw;
+      border: none;
+      padding: 0.5rem 1rem;
+
+      &::placeholder {
+        color: var(--color-neutral-500);
+      }
+    }
+
+    &__button {
+      cursor: pointer;
+      border: none;
+      background-color: var(--color-neutral-300);
+
+      span {
+        color: var(--color-neutral-500);
+      }
+    }
+  }
+}
