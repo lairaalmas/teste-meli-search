@@ -5,15 +5,30 @@ import SearchResultPage from "./pages/SearchResultPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 
 import "./css/App.min.css";
+import { loader as searchLoader } from "./components/SearchBar";
+import SearchLayout from "./pages/SearchLayout";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    // errorElement
+    id: "root",
     children: [
-      { path: "items/:id", element: <ProductDetailPage /> },
-      { path: "items/search/:query", element: <SearchResultPage /> },
+      {
+        path: "items",
+        element: <SearchLayout />,
+        loader: searchLoader,
+        children: [
+          {
+            path: ":id",
+            element: <ProductDetailPage />,
+          },
+          {
+            path: "?search=:query",
+            element: <SearchResultPage />,
+          },
+        ],
+      },
     ],
   },
 ]);

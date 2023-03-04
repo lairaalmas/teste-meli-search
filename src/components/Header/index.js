@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 import "../../css/Header.min.css";
 import logoSrc from "../../assets/logo_small.png";
+
 const Header = (props) => {
   return (
     <header className="Header">
