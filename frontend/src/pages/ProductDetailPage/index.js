@@ -7,10 +7,17 @@ import "../../css/ProductDetail.min.css";
 
 const ProductDetailPage = () => {
   const data = useLoaderData();
-  let item;
+  let item, amount;
 
-  if (data && data.item) item = data.item;
-  else {
+  if (data && data.item) {
+    item = data.item;
+
+    amount = Intl.NumberFormat("es-AR", {
+      style: "currency",
+      currency: item.price.currency,
+    }).format(item.price.amount);
+    amount = amount.split(",")[0];
+  } else {
     return (
       <Card className="ProductDetail">
         <h2>Erro</h2>
@@ -32,7 +39,7 @@ const ProductDetailPage = () => {
             </p>
             <h2 className="ProductDetail__main__info__title">{item.title}</h2>
             <div className="ProductDetail__main__info__price">
-              <span>$&nbsp;{item.price.amount}</span>
+              <span>{amount}</span>
               <span>{item.price.decimals}</span>
             </div>
             <button>Comprar</button>
