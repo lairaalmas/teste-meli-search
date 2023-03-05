@@ -1,32 +1,34 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import RootLayout from "./pages/RootLayout";
+import SearchLayout from "./pages/SearchLayout";
+import ErrorPage from "./pages/ErrorPage";
 import SearchResultPage from "./pages/SearchResultPage";
-import ProductDetailPage from "./pages/ProductDetailPage";
+// import ProductDetailPage from "./pages/ProductDetailPage";
+import { loadProductDetails, loadSearchItems } from "./loaders/";
 
 import "./css/App.min.css";
-import { loader as searchLoader } from "./components/SearchBar";
-import SearchLayout from "./pages/SearchLayout";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    id: "root",
     children: [
       {
         path: "items",
         element: <SearchLayout />,
-        loader: searchLoader,
+        errorElement: <ErrorPage />,
         children: [
           {
-            path: ":id",
-            element: <ProductDetailPage />,
-          },
-          {
-            path: "?search=:query",
+            index: true,
             element: <SearchResultPage />,
+            loader: loadSearchItems,
           },
+          // {
+          //   path: ":id",
+          //   element: <ProductDetailPage />,
+          //   loader: loadProductDetails,
+          // },
         ],
       },
     ],

@@ -1,0 +1,31 @@
+.SearchResult {
+  &__list {
+    &__item {
+      gap: 1rem;
+      display: flex;
+      margin-bottom: 1rem;
+
+      &__place {
+        width: 20%;
+      }
+
+      img {
+        max-width: 200px;
+        height: 150px;
+      }
+
+      &__info {
+        flex-grow: 1;
+        font-size: 1.2rem;
+        display: flex;
+        flex-direction: column;
+
+        &__price {
+          font-size: 1.5rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+}
