@@ -98,12 +98,37 @@ export const loadProductDetails = async ({ params }) => {
           condition: data.condition,
           free_shipping: data.shipping.free_shipping,
           sold_quantity: data.sold_quantity,
-          description:
-            "Dummy description dummy description dummy description dummy description dummy description dummy description dummy description dummy description dummy description dummy description dummy description dummy description dummy description dummy description dummy description dummy description dummy description dummy description dummy description dummy description dummy description",
+          description: "descripción no disponible",
         },
       };
 
-      return treatedData;
+      return loadProductDescription(id, treatedData);
+    } else {
+      throw json({ message: "Could not use fetched data." });
+    }
+  }
+};
+
+export const loadProductDescription = async (id, treatedData) => {
+  // alert("product description");
+
+  let newTreatedData = { ...treatedData };
+
+  const response = await fetch(
+    "https://api.mercadolibre.com/items/" + id + "/description"
+  );
+
+  if (!response.ok) {
+    throw json({ message: "Could not fetch product description." });
+  } else {
+    const data = await response.json();
+
+    if (data && data.plain_text) {
+      newTreatedData = {
+        ...treatedData,
+        item: { ...treatedData.item, description: data.plain_text },
+      };
+      return newTreatedData;
     } else {
       throw json({ message: "Could not use fetched data." });
     }
