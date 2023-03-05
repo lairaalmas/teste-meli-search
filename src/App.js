@@ -4,7 +4,7 @@ import RootLayout from "./pages/RootLayout";
 import SearchLayout from "./pages/SearchLayout";
 import ErrorPage from "./pages/ErrorPage";
 import SearchResultPage from "./pages/SearchResultPage";
-// import ProductDetailPage from "./pages/ProductDetailPage";
+import ProductDetailPage from "./pages/ProductDetailPage";
 import { loadProductDetails, loadSearchItems } from "./loaders/";
 
 import "./css/App.min.css";
@@ -24,11 +24,11 @@ const router = createBrowserRouter([
             element: <SearchResultPage />,
             loader: loadSearchItems,
           },
-          // {
-          //   path: ":id",
-          //   element: <ProductDetailPage />,
-          //   loader: loadProductDetails,
-          // },
+          {
+            path: ":id",
+            element: <ProductDetailPage />,
+            loader: loadProductDetails,
+          },
         ],
       },
     ],
