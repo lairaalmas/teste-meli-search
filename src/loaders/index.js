@@ -15,49 +15,49 @@ export const loadSearchItems = async ({ request }) => {
   } else {
     const data = await response.json();
 
-    if (data && data.results) {
-      let treatedData = {
-        author: {
-          name: "Dummy name",
-          lastname: "Dummy lastname",
-        },
-        categories: [],
-        items: [],
-      };
+    let treatedData = {
+      author: {
+        name: "Dummy name",
+        lastname: "Dummy lastname",
+      },
+      categories: [],
+      items: [],
+    };
 
-      if (data.results.length === 0) return treatedData;
+    if (data) {
+      if (data?.results?.length !== 0) {
+        treatedData.items = data.results.slice(0, 4).map((item) => {
+          let [amount, decimals] = ("" + item.price).split(".");
 
-      treatedData.categories = data.filters[0].values[0].path_from_root.map(
-        (category) => category.name
-      );
+          amount = +amount;
 
-      treatedData.items = data.results.slice(0, 4).map((item) => {
-        let [amount, decimals] = ("" + item.price).split(".");
+          if (decimals) {
+            decimals = decimals.length === 1 ? decimals + "0" : decimals;
+          } else decimals = "00";
 
-        amount = +amount;
+          return {
+            id: item.id || "Dummy id",
+            title: item.title || "Dummy title",
+            price: {
+              currency: item.currency_id || "Dummy currency",
+              amount: amount,
+              decimals: decimals, // number or "number" ?
+            },
+            picture: item.thumbnail,
+            condition: item.condition,
+            free_shipping: item.shipping.free_shipping,
+          };
+        });
+      }
 
-        if (decimals) {
-          decimals = decimals.length === 1 ? decimals + "0" : decimals;
-        } else decimals = "00";
-
-        return {
-          id: item.id || "Dummy id",
-          title: item.title || "Dummy title",
-          price: {
-            currency: item.currency_id || "Dummy currency",
-            amount: amount,
-            decimals: decimals, // number or "number" ?
-          },
-          picture: item.thumbnail,
-          condition: item.condition,
-          free_shipping: item.shipping.free_shipping,
-        };
-      });
-
-      return treatedData;
-    } else {
-      throw json({ message: "Could not use fetched data." });
+      if (data?.filters?.[0]?.values[0]?.path_from_root) {
+        treatedData.categories = data.filters[0].values[0].path_from_root.map(
+          (category) => category.name
+        );
+      }
     }
+
+    return treatedData;
   }
 };
 

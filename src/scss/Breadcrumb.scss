@@ -1,0 +1,24 @@
+.Breadcrumb {
+  &__list {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    font-size: 0.8rem;
+    color: var(--color-neutral-400);
+
+    &__item {
+      & + li:before {
+        content: ">";
+        margin-right: 0.5rem;
+      }
+
+      &:last-child {
+        font-weight: 700;
+      }
+    }
+  }
+}
