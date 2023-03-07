@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-// const searchRoutes = require("./items/items.routes.js");
+const searchRoutes = require("./items/items.routes.js");
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Methods", "GET");
@@ -13,12 +13,13 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use("/api", searchRoutes);
+app.use("/api", searchRoutes);
 
 app.use((error, req, res, next) => {
   const status = error.status || 500;
   const message = error.message || "Something went wrong.";
-  res.status(status).json({ message: message });
+
+  res.status(status).json({ message: message, status: status });
 });
 
 module.exports = app;
