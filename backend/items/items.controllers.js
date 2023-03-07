@@ -27,7 +27,7 @@ async function getProductDetails(req, res, next) {
   try {
     const id = req.params.id;
 
-    const detailsURL = `/items/${id}a`;
+    const detailsURL = `/items/${id}`;
     const descriptionURL = `/items/${id}/description`;
 
     const [details, description] = await Promise.allSettled([

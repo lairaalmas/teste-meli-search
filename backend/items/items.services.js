@@ -77,15 +77,13 @@ function productDetailsService(data) {
   return treatedData;
 }
 
-function productDescriptionService(details, descriptionData) {
-  const treatedData = descriptionData?.plain_text
-    ? {
-        ...details,
-        item: { ...details.item, description: descriptionData.plain_text },
-      }
-    : details;
+function productDescriptionService(details, description) {
+  let updatedDetails = details;
 
-  return treatedData;
+  if (description?.plain_text)
+    updatedDetails.item.description = description.plain_text;
+
+  return updatedDetails;
 }
 
 function getFormattedPrice(price) {
