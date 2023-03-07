@@ -77,6 +77,17 @@ function productDetailsService(data) {
   return treatedData;
 }
 
+function productDescriptionService(details, descriptionData) {
+  const treatedData = descriptionData?.plain_text
+    ? {
+        ...details,
+        item: { ...details.item, description: descriptionData.plain_text },
+      }
+    : details;
+
+  return treatedData;
+}
+
 function getFormattedPrice(price) {
   let [amount, decimals] = ("" + price).split(".");
   return [
@@ -89,30 +100,5 @@ module.exports = {
   requestData,
   searchItemsService,
   productDetailsService,
+  productDescriptionService,
 };
-
-// export const loadProductDescription = async (id, treatedData) => {
-//   // alert("product description");
-
-//   let newTreatedData = { ...treatedData };
-
-//   const response = await fetch(
-//     "https://api.mercadolibre.com/items/" + id + "/description"
-//   );
-
-//   if (!response.ok) {
-//     throw json({ message: "Could not fetch product description." });
-//   } else {
-//     const data = await response.json();
-
-//     if (data && data.plain_text) {
-//       newTreatedData = {
-//         ...treatedData,
-//         item: { ...treatedData.item, description: data.plain_text },
-//       };
-//       return newTreatedData;
-//     } else {
-//       throw json({ message: "Could not use fetched data." });
-//     }
-//   }
-// };

@@ -2,9 +2,10 @@ const axios = require("axios");
 const axiosInstance = axios.create({ baseURL: "https://api.mercadolibre.com" });
 
 const {
+  requestData,
   searchItemsService,
   productDetailsService,
-  requestData,
+  productDescriptionService,
 } = require("./items.services");
 
 async function getSearchedItems(req, res, next) {
@@ -16,8 +17,9 @@ async function getSearchedItems(req, res, next) {
 
     res.status(200).json({ items: searchItemsService(data) });
   } catch (error) {
-    //Could not fetch searched products.
-    next(error);
+    const err = new Error("Could not fetch searched products");
+    err.status = error.response.status;
+    next(err);
   }
 }
 
@@ -25,12 +27,26 @@ async function getProductDetails(req, res, next) {
   try {
     const id = req.params.id;
 
-    const url = `/items/${id}`;
-    const data = await requestData(url);
+    const detailsURL = `/items/${id}a`;
+    const descriptionURL = `/items/${id}/description`;
 
-    res.status(200).json({ item: productDetailsService(data) });
+    const [details, description] = await Promise.allSettled([
+      requestData(detailsURL),
+      requestData(descriptionURL),
+    ]);
+
+    if (details.status === "rejected") {
+      const err = new Error("Could not fetch product details");
+      err.status = details.reason.response.status;
+
+      throw err;
+    } else {
+      let data = productDetailsService(details.value);
+      data = productDescriptionService(data, description.value);
+
+      res.status(200).json({ item: data });
+    }
   } catch (error) {
-    //Could not fetch product details
     next(error);
   }
 }
