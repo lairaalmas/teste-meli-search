@@ -50,10 +50,9 @@
     }
 
     button {
+      padding: 0.75rem 2rem;
       background-color: var(--color-button);
       color: var(--color-neutral-100);
-      padding: 0.75rem 2rem;
-      font-weight: 500;
     }
   }
 }

@@ -13,16 +13,10 @@
     }
 
     button {
-      border: none;
       background-color: var(--color-neutral-300);
-      cursor: pointer;
 
       span {
         color: var(--color-neutral-500);
-      }
-
-      :hover {
-        opacity: 0.8;
       }
     }
   }

@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigation } from "react-router-dom";
 import Breadcrumb from "../../components/Breadcrumb";
 
 import Card from "../../components/Card";
@@ -7,12 +7,11 @@ import "../../css/ProductDetail.min.css";
 
 const ProductDetailPage = () => {
   const data = useLoaderData();
+  const navigation = useNavigation();
 
   let content;
 
-  if (!data || !data.item) {
-    content = <p>No se encontraron detalles del productos</p>;
-  } else {
+  if (data?.item) {
     const item = data.item;
 
     const amount = Intl.NumberFormat("es-AR", {
@@ -54,7 +53,11 @@ const ProductDetailPage = () => {
         </div>
       </>
     );
+  } else {
+    content = <p>No se encontraron detalles del productos</p>;
   }
+
+  if (navigation.state === "loading") content = <p>Cargando...</p>;
 
   return (
     <>
