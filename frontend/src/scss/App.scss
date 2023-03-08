@@ -1,16 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 body {
   --color-brand: #fff159;
-  --color-button: #3383fb;
-  --color-neutral-100: #fff;
-  /** background and search icon background*/
+  --color-button: #3483fa;
+  --color-neutral-100: #fff; // background and search button bg
   --color-neutral-300: #ededed;
-  --color-neutral-400: #a9aaab;
-  /** search icon */
-  --color-neutral-500: #666;
-  /** text */
-  --color-neutral-800: #333;
+  --color-neutral-400: #888; // breadcrumb
+  --color-neutral-500: #666; // lighter text and search icon
+  --color-neutral-800: #333; // text
 
   margin: 0;
   min-height: 100vh;
@@ -21,7 +18,7 @@ body {
 }
 
 a {
-  color: inherit;
+  // color: inherit;
   text-decoration: none;
 }
 

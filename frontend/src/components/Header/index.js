@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import "../../css/Header.min.css";
 import logoSrc from "../../assets/logo_small.png";
 
-const Header = (props) => {
+const Header = ({ children }) => {
   return (
     <header className="Header">
-      <Link to="">
-        <img src={logoSrc} alt="Mercado Libre Logo." />
+      <Link to="/">
+        <img src={logoSrc} alt="Mercado Libre" />
+        <span className="visually-hidden">Mercado Libre</span>
       </Link>
-      {props.children}
+      {children}
     </header>
   );
 };

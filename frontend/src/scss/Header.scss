@@ -1,9 +1,10 @@
 .Header {
-  background-color: var(--color-brand);
-  padding: 0.5rem;
-
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2rem;
+
+  background-color: var(--color-brand);
+  padding: 0.5rem;
+  margin-bottom: 2.8rem;
 }

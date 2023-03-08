@@ -4,6 +4,7 @@ import "../../css/Breadcrumb.min.css";
 
 const Breadcrumb = () => {
   const data = useLoaderData();
+
   let categories = [];
 
   if (data?.categories?.length) {
@@ -11,19 +12,17 @@ const Breadcrumb = () => {
   }
 
   return (
-    <div className="Breadcrumb">
-      <ul className="Breadcrumb__list">
-        {categories.length !== 0 ? (
-          categories.map((category, index) => (
-            <li className="Breadcrumb__list__item" key={"breadcrumb" + index}>
+    categories.length !== 0 && (
+      <nav className="Breadcrumb">
+        <ul className="Breadcrumb__list">
+          {categories.map((category, index) => (
+            <li className="Breadcrumb__list__item" key={"breadcrumb-" + index}>
               {category}
             </li>
-          ))
-        ) : (
-          <li className="Breadcrumb__list">Sin categoría específica</li>
-        )}
-      </ul>
-    </div>
+          ))}
+        </ul>
+      </nav>
+    )
   );
 };
 
