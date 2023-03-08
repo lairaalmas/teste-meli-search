@@ -25,7 +25,7 @@ export const SearchResultItem = ({ item }) => {
           {amount.split(",")[0]}
 
           {item.free_shipping && (
-            <span class="material-symbols-outlined" title="Envio gratis">
+            <span className="material-symbols-outlined" title="Envio gratis">
               local_shipping
             </span>
           )}

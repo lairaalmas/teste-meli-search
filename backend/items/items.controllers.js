@@ -15,7 +15,7 @@ async function getSearchedItems(req, res, next) {
 
     const data = await requestData(url);
 
-    res.status(200).json({ items: searchItemsService(data) });
+    res.status(200).json(searchItemsService(data));
   } catch (error) {
     const err = new Error("Could not fetch searched products");
     err.status = error.response.status;
@@ -40,12 +40,12 @@ async function getProductDetails(req, res, next) {
       err.status = details.reason.response.status;
 
       throw err;
-    } else {
-      let data = productDetailsService(details.value);
-      data = productDescriptionService(data, description.value);
-
-      res.status(200).json({ item: data });
     }
+
+    let data = productDetailsService(details.value);
+    data = productDescriptionService(data, description.value);
+
+    res.status(200).json(data);
   } catch (error) {
     next(error);
   }

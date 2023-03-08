@@ -1,13 +1,14 @@
-import { Link, useRouteError } from "react-router-dom";
+import { isRouteErrorResponse, Link, useRouteError } from "react-router-dom";
 
 import "../../css/ErrorPage.min.css";
 
 const ErrorPage = () => {
   const error = useRouteError();
+
   let message = "Something went wrong!";
 
-  if (error && error.data && error.data.message) {
-    message = error.data.message;
+  if (error || isRouteErrorResponse(error)) {
+    if (error?.data?.message) message = error.data.message;
   }
 
   return (
