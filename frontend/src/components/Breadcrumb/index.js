@@ -1,14 +1,19 @@
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 import "../../css/Breadcrumb.min.css";
 
-const Breadcrumb = () => {
+const Breadcrumb = ({ links }) => {
   const data = useLoaderData();
 
   let categories = [];
 
   if (data?.categories?.length) {
     categories = data.categories;
+  }
+
+  if (links) {
+    categories = links;
   }
 
   return (

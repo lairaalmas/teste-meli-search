@@ -12,7 +12,13 @@ const SearchResultPage = () => {
   let content = data?.items?.length ? (
     <ul className="SearchResult__list">
       {data.items.map((item) => {
-        return <SearchResultItem item={item} key={item.id} />;
+        return (
+          <SearchResultItem
+            item={item}
+            key={item.id}
+            categories={data.categories}
+          />
+        );
       })}
     </ul>
   ) : (

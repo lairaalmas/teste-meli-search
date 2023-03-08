@@ -1,4 +1,4 @@
-import { useLoaderData, useNavigation } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigation } from "react-router-dom";
 import Breadcrumb from "../../components/Breadcrumb";
 
 import Card from "../../components/Card";
@@ -8,6 +8,7 @@ import "../../css/ProductDetail.min.css";
 const ProductDetailPage = () => {
   const data = useLoaderData();
   const navigation = useNavigation();
+  const location = useLocation();
 
   let content;
 
@@ -26,14 +27,14 @@ const ProductDetailPage = () => {
             <img src={item.picture} alt={item.picture} />
           </div>
 
-          <div className="ProductDetail__content__description">
+          <section className="ProductDetail__content__description">
             <h2>Descripción del producto</h2>
 
             <p>{item.description}</p>
-          </div>
+          </section>
         </div>
 
-        <div className="ProductDetail__information">
+        <section className="ProductDetail__information">
           <div className="ProductDetail__information__extra">
             <small>
               {item.condition} - {item.sold_quantity} vendidos
@@ -50,7 +51,7 @@ const ProductDetailPage = () => {
           </div>
 
           <button type="button">Comprar</button>
-        </div>
+        </section>
       </>
     );
   } else {
@@ -61,7 +62,7 @@ const ProductDetailPage = () => {
 
   return (
     <>
-      <Breadcrumb />
+      <Breadcrumb links={location.state} />
       <Card className="ProductDetail">{content}</Card>
     </>
   );

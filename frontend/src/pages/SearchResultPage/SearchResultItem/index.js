@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import "../../../css/SearchResult.min.css";
 
-export const SearchResultItem = ({ item }) => {
+export const SearchResultItem = ({ item, categories }) => {
   const path = item.id;
 
   const amount = Intl.NumberFormat("es-AR", {
@@ -13,13 +13,14 @@ export const SearchResultItem = ({ item }) => {
   return (
     <li className="SearchResult__list__item">
       <div className="SearchResult__list__item__picture">
-        <Link to={path}>
+        <Link to={path} state={categories}>
           <img src={item.picture} alt={item.title} />
         </Link>
       </div>
       <div className="SearchResult__list__item__information">
         <Link
           to={path}
+          state={categories}
           className="SearchResult__list__item__information__price"
         >
           {amount.split(",")[0]}
@@ -31,7 +32,9 @@ export const SearchResultItem = ({ item }) => {
           )}
         </Link>
         <p>
-          <Link to={path}>{item.title}</Link>
+          <Link to={path} state={categories}>
+            {item.title}
+          </Link>
         </p>
       </div>
       <div className="SearchResult__list__item__location">
