@@ -5,12 +5,10 @@ import "../../../css/SearchResult.min.css";
 export const SearchResultItem = ({ item }) => {
   const path = item.id;
 
-  let amount = Intl.NumberFormat("es-AR", {
+  const amount = Intl.NumberFormat("es-AR", {
     style: "currency",
     currency: item.price.currency,
   }).format(item.price.amount);
-
-  amount = amount.split(",")[0];
 
   return (
     <li className="SearchResult__list__item">
@@ -24,7 +22,7 @@ export const SearchResultItem = ({ item }) => {
           to={path}
           className="SearchResult__list__item__information__price"
         >
-          {amount}
+          {amount.split(",")[0]}
 
           {item.free_shipping && (
             <span class="material-symbols-outlined" title="Envio gratis">

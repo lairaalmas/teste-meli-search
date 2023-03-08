@@ -27,7 +27,6 @@
 
       &__information {
         margin-top: 1rem;
-        padding-right: 8rem;
 
         font-weight: 400;
 
@@ -55,5 +54,12 @@
         color: var(--color-neutral-500);
       }
     }
+  }
+}
+
+@media (min-width: 992px) {
+  .SearchResult__list__item__information {
+    //    padding-right: 0;
+    padding-right: 8rem;
   }
 }
