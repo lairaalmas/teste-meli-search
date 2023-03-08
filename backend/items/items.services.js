@@ -20,7 +20,9 @@ function searchItemsService(data) {
     if (data?.results?.length !== 0) {
       treatedData.items = data.results.map((item) => {
         const [amount, decimals] = getFormattedPrice(item.price);
-
+        const condition = item.attributes.filter(
+          (attribute) => attribute.id === "ITEM_CONDITION"
+        );
         return {
           id: item.id,
           title: item.title,
@@ -30,7 +32,7 @@ function searchItemsService(data) {
             decimals: decimals,
           },
           picture: item.thumbnail,
-          condition: item.condition,
+          condition: condition[0].value_name,
           free_shipping: item.shipping.free_shipping,
           state: item.address.state_name,
         };
@@ -58,7 +60,9 @@ function productDetailsService(data) {
 
   if (data?.id) {
     const [amount, decimals] = getFormattedPrice(data.price);
-
+    const condition = data.attributes.filter(
+      (attribute) => attribute.id === "ITEM_CONDITION"
+    );
     treatedData.item = {
       id: data.id,
       title: data.title,
@@ -68,7 +72,7 @@ function productDetailsService(data) {
         decimals: decimals,
       },
       picture: data.pictures[0].url,
-      condition: data.condition,
+      condition: condition[0].value_name,
       free_shipping: data.shipping.free_shipping,
       sold_quantity: data.sold_quantity,
       description: "descripción no disponible",
