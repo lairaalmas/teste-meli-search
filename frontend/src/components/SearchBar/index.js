@@ -2,19 +2,20 @@ import { Form } from "react-router-dom";
 
 import "../../css/SearchBar.min.css";
 
-const SearchBar = (props) => {
+const SearchBar = () => {
   return (
     <div className="SearchBar">
-      <Form method="get" action="/items" className="SearchBar__form">
+      <Form method="get" action="/items">
+        <label className="visually-hidden">Buscar produtos</label>
         <input
-          className="SearchBar__form__field"
           type="search"
           name="search"
           placeholder="Nunca dejes de buscar"
-          aria-label="Buscar produtos"
         />
-        <button className="SearchBar__form__button">
-          <span className="material-symbols-outlined">search</span>
+        <button aria-label="Buscar">
+          <span className="material-symbols-outlined" aria-hidden="true">
+            search
+          </span>
         </button>
       </Form>
     </div>

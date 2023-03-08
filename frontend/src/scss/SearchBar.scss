@@ -1,8 +1,8 @@
 .SearchBar {
-  &__form {
+  form {
     display: flex;
 
-    &__field {
+    input {
       width: 65vw;
       border: none;
       padding: 0.5rem 1rem;
@@ -12,13 +12,17 @@
       }
     }
 
-    &__button {
-      cursor: pointer;
+    button {
       border: none;
       background-color: var(--color-neutral-300);
+      cursor: pointer;
 
       span {
         color: var(--color-neutral-500);
+      }
+
+      :hover {
+        opacity: 0.8;
       }
     }
   }
