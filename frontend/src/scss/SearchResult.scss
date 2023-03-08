@@ -1,30 +1,58 @@
 .SearchResult {
+  --searchResult-offset: 1rem;
+
   &__list {
     &__item {
-      gap: 1rem;
-      display: flex;
-      margin-bottom: 1rem;
+      display: grid;
+      grid-template-columns: 15% auto 15%;
+      column-gap: 1.5rem;
 
-      &__place {
-        width: 20%;
+      &:not(:last-child) {
+        margin-bottom: var(--searchResult-offset);
+        border-bottom: 1px solid var(--color-neutral-300);
       }
 
-      img {
-        max-width: 200px;
-        height: 150px;
+      a {
+        color: inherit;
       }
 
-      &__info {
-        flex-grow: 1;
-        font-size: 1.2rem;
-        display: flex;
-        flex-direction: column;
+      &__picture {
+        margin-bottom: var(--searchResult-offset);
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      &__information {
+        margin-top: 1rem;
+        padding-right: 8rem;
+
+        font-weight: 400;
 
         &__price {
-          font-size: 1.5rem;
-          font-weight: 700;
-          margin-bottom: 1rem;
+          display: flex;
+          align-items: flex-end;
+          gap: 0.5rem;
+
+          font-size: 1.2rem;
+          font-weight: 500;
+
+          span {
+            padding: 3px;
+            border-radius: 50%;
+
+            background-color: var(--color-feedback-success);
+            color: var(--color-neutral-800);
+            font-size: 0.7rem;
+          }
         }
+      }
+
+      &__location {
+        margin-top: 1.5rem;
+        color: var(--color-neutral-500);
       }
     }
   }

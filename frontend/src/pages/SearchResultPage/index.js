@@ -11,17 +11,15 @@ const SearchResultPage = () => {
   return (
     <>
       <Breadcrumb />
-      <Card>
-        {data.items && data.items.length === 0 ? (
-          <div className="SearchResult__list">
-            <p>No items found</p>
-          </div>
-        ) : (
+      <Card className="SearchResult">
+        {data?.items?.length ? (
           <ul className="SearchResult__list">
             {data.items.map((item) => {
               return <SearchResultItem item={item} key={item.id} />;
             })}
           </ul>
+        ) : (
+          <p>No se encontraron productos</p>
         )}
       </Card>
     </>

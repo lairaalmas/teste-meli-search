@@ -9,25 +9,35 @@ export const SearchResultItem = ({ item }) => {
     style: "currency",
     currency: item.price.currency,
   }).format(item.price.amount);
+
   amount = amount.split(",")[0];
 
   return (
     <li className="SearchResult__list__item">
-      <div className="SearchResult__list__item__img">
+      <div className="SearchResult__list__item__picture">
         <Link to={path}>
-          <img src={item.picture} alt={""} />
+          <img src={item.picture} alt={item.title} />
         </Link>
       </div>
-      <div className="SearchResult__list__item__info">
-        <Link to={path} className="SearchResult__list__item__info__price">
+      <div className="SearchResult__list__item__information">
+        <Link
+          to={path}
+          className="SearchResult__list__item__information__price"
+        >
           {amount}
+
+          {item.free_shipping && (
+            <span class="material-symbols-outlined" title="Envio gratis">
+              local_shipping
+            </span>
+          )}
         </Link>
-        <h3>
+        <p>
           <Link to={path}>{item.title}</Link>
-        </h3>
+        </p>
       </div>
-      <div className="SearchResult__list__item__place">
-        <small>{item.city}</small>
+      <div className="SearchResult__list__item__location">
+        <small>{item.state}</small>
       </div>
     </li>
   );
