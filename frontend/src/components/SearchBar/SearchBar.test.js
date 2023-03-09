@@ -43,12 +43,12 @@ describe("SearchBar component", () => {
     expect(router.state.location.pathname).toEqual("/");
 
     const inputField = await waitFor(() => screen.findByRole("searchbox"));
-    await waitFor(async () => user.type(inputField, "shampoo"));
+    await waitFor(async () => user.type(inputField, "myQuery"));
 
     const button = await screen.findByRole("button");
     await waitFor(async () => user.click(button));
 
-    expect(router.state.location.search).toEqual("?search=shampoo");
+    expect(router.state.location.search).toEqual("?search=myQuery");
   });
 
   it("redirects to SearchResultPage after executing empty search", async () => {
