@@ -1,0 +1,15 @@
+Este repositório contém dois projetos:
+
+- uma aplicação frontend react
+- um backend que liga o frontend com a API do Mercado Livre
+
+Antes de rodar nossa aplicação você deve:
+
+- rodar "npm install" dentro dos diretorios "frontend" e "backend" (separadamente) para instalar as dependencias de cada projeto.
+
+Feito isso, para executar a aplicação corretamente você deve:
+
+- iniciar o servidor backend rodando "npm start" dentro da pasta "backend"
+- iniciar o servidor frontend rodando (também) "npm start" dentro da pasta "frontend"
+
+(!) Ambos servidores (frontend e backend) precisam estar rodando ao mesmo tempo para que a aplicação execute corretamente.
