@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 import "../../css/Breadcrumb.min.css";
