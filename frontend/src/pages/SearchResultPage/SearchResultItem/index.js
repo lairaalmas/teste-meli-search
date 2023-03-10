@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import "../../../css/SearchResult.min.css";
+import "../../../styles/css/SearchResult.min.css";
 
 export const SearchResultItem = ({ item, categories }) => {
   const path = item.id;

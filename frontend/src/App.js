@@ -5,9 +5,9 @@ import SearchLayout from "./pages/SearchLayout";
 import ErrorPage from "./pages/ErrorPage";
 import SearchResultPage from "./pages/SearchResultPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
-import { loadProductDetails, loadSearchItems } from "./loaders/";
+import { loadProductDetails, loadSearchItems } from "./utils/loaders";
 
-import "./css/App.min.css";
+import "./styles/css/App.min.css";
 
 const router = createBrowserRouter([
   {

@@ -3,7 +3,7 @@ import Breadcrumb from "../../components/Breadcrumb";
 
 import Card from "../../components/Card";
 
-import "../../css/ProductDetail.min.css";
+import "../../styles/css/ProductDetail.min.css";
 
 const ProductDetailPage = () => {
   const data = useLoaderData();

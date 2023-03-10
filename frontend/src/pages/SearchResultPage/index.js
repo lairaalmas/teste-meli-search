@@ -3,7 +3,7 @@ import Card from "../../components/Card";
 import SearchResultItem from "./SearchResultItem";
 import Breadcrumb from "../../components/Breadcrumb";
 
-import "../../css/SearchResult.min.css";
+import "../../styles/css/SearchResult.min.css";
 
 const SearchResultPage = () => {
   const data = useLoaderData();

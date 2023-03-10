@@ -1,6 +1,6 @@
 import { Form, useNavigation } from "react-router-dom";
 
-import "../../css/SearchBar.min.css";
+import "../../styles/css/SearchBar.min.css";
 
 const SearchBar = () => {
   const navigation = useNavigation();

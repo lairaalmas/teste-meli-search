@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 
-import "../../css/Breadcrumb.min.css";
+import "../../styles/css/Breadcrumb.min.css";
 
 const Breadcrumb = ({ links }) => {
   const data = useLoaderData();

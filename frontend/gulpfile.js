@@ -8,7 +8,7 @@ const rename = require("gulp-rename");
 // .scss -> .min.css
 gulp.task("sass", function () {
   return gulp
-    .src("./src/scss/*.scss")
+    .src("./src/styles/scss/*.scss")
     .pipe(sass())
     .pipe(prefix())
     .pipe(minify())
@@ -17,14 +17,14 @@ gulp.task("sass", function () {
         extname: ".min.css",
       })
     )
-    .pipe(gulp.dest("./src/css"));
+    .pipe(gulp.dest("./src/styles/css"));
 });
 
 // watch scss files
 gulp.task(
   "watch",
   gulp.series("sass", function () {
-    gulp.watch("src/scss/*.scss", gulp.series("sass"));
+    gulp.watch("src/styles/scss/*.scss", gulp.series("sass"));
   })
 );
 

@@ -43,7 +43,6 @@
     "gulp-clean-css": "^4.3.0",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.1.0",
-    "react-test-renderer": "^18.2.0",
     "sass": "^1.58.3"
   },
   "author": "Laira Almas"
