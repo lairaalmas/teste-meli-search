@@ -13,7 +13,7 @@ const {
 describe("Request Data Function", () => {
   it("performas 'get' request to the API", async () => {
     // given
-    const path = "path";
+    const path = "/path";
     const response = { data: { items: [] } };
     axios.get.mockResolvedValueOnce(response);
 

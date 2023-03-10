@@ -1,7 +1,7 @@
 const axios = require("axios");
 
-async function requestData(url) {
-  const response = await axios.get("https://api.mercadolibre.com/" + url);
+async function requestData(path) {
+  const response = await axios.get("https://api.mercadolibre.com" + path);
   return response.data;
 }
 

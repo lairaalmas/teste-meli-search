@@ -14,7 +14,7 @@ O backend foi desenvolvido em **javascript** usando [nodejs](https://nodejs.org/
 
 Diferente do front-end as requisições http foram realizadas usando [axios](https://axios-http.com/).
 
-Os testes foram escritos usando [Jest](https://jestjs.io/pt-BR/).
+Os testes foram escritos usando [Jest](https://jestjs.io/pt-BR/) e [@jest-mock/express](https://www.npmjs.com/package/@jest-mock/express).
 
 ## Autoria
 
