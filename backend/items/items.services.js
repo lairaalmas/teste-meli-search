@@ -1,8 +1,7 @@
 const axios = require("axios");
-const axiosInstance = axios.create({ baseURL: "https://api.mercadolibre.com" });
 
 async function requestData(url) {
-  const response = await axiosInstance.get(url);
+  const response = await axios.get("https://api.mercadolibre.com/" + url);
   return response.data;
 }
 
@@ -104,4 +103,5 @@ module.exports = {
   searchItemsService,
   productDetailsService,
   productDescriptionService,
+  getFormattedPrice,
 };

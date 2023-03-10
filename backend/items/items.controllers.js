@@ -1,6 +1,3 @@
-const axios = require("axios");
-const axiosInstance = axios.create({ baseURL: "https://api.mercadolibre.com" });
-
 const {
   requestData,
   searchItemsService,
